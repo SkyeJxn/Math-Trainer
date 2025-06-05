@@ -8,7 +8,7 @@ public class Calculator {
     private int b;
     private int op;
     private int res;
-    private Scanner scanner;
+    private final Scanner scanner;
     private int ein;
 
     private static int right;

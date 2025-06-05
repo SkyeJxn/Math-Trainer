@@ -1,76 +1,46 @@
-
-import java.util.Scanner;
-
 public class Config {
-    
-    private int Gamemode;
-    private final Calculator calc;
-    private final Lives stocked;
-    private final RunTimer timing;
-    private int Rounds;
-    private Scanner scanner;
+    private int rounds;
     private int range;
+    private boolean useLives;
+    private boolean useTimer;
 
     public Config(){
-        calc = new Calculator();
-        Gamemode = 3;
-        scanner = new Scanner(System.in);
-        stocked = new Lives(3);
-        timing = new RunTimer();
-        Rounds = 5;
+        rounds = 5;
         range = 50;
+        useTimer = false;
+        useLives = false;
         }
 
-    public void changeGamemode(){
-        System.out.println("Gamemodes: 1 = Stocked; 2 = Timed; 3 = Free");
-        System.out.println("Which gamemode do you want?:");
-        Gamemode = scanner.nextInt();
-
-        if (Gamemode == 1){
-            stocked.setMax();
-        }
-
-        System.out.println("");
+    public void setRounds(int numRounds){
+        rounds = numRounds;
     }
 
-    public void changeRounds(){
-        System.out.println("Changing Round Count");
-        System.out.println("How many rounds do you want to play?:");
-        Rounds = scanner.nextInt();
+    public void setRange(int numRange){
+        range = numRange;
     }
 
-    public void changeRange(){
-        System.out.println("Changing calculator range");
-        System.out.println("What range should the questions have?:");
-        range = scanner.nextInt();
+    public void setLives(boolean stateLives){
+        useLives = stateLives;
     }
 
-    public String getGamemode(){
-        String mode = "";
-
-        switch(Gamemode){
-            case 1: 
-                mode = "Stocked";
-                break;
-            case 2:
-                mode = "Timed";
-                break;
-            case 3:
-                mode = "free";
-        }
-
-        return mode;
+    public void setTimer(boolean stateTimer){
+        useTimer = stateTimer;
     }
 
-    public void Game(){
-        for (int i = 0; i < Rounds; i++) {
-            if (Gamemode == 2){
-                timing.start();
-            }
-            calc.newRound(range);
-            if (Gamemode == 2){
-                timing.end();
-            }
-        }
+    public int getRounds() {
+        return rounds;
     }
+
+    public int getRange() {
+        return range;
+    }
+
+    public boolean getLives(){
+        return useLives;
+    }
+
+    public boolean getTimer(){
+        return useTimer;
+    }
+
 }

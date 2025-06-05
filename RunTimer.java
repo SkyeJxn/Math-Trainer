@@ -1,10 +1,9 @@
-public class RunTimer extends Mechanic{
+public class RunTimer{
 
     private long start;
     private long runtime;
 
     public RunTimer(){
-        super();
         start = 0;
         runtime = 0;
     }

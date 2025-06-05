@@ -1,14 +1,9 @@
-
-import java.util.Scanner;
-
-public class Lives extends Mechanic {
+public class Lives{
 
     private int max;
     private int current;
-    private Scanner scanner;
 
     public Lives(int x){
-        super();
         max = x;
         current = x;
     }
@@ -29,10 +24,7 @@ public class Lives extends Mechanic {
         current = max;
     }
 
-    public void setMax(){
-        System.out.println("Setting Stock Count.");
-        System.out.println("How many Lives do you want to have?: ");
-        max = scanner.nextInt();
-        System.out.println("");
+    public void setMax(int numMax){
+        max = numMax;
     }
 }
