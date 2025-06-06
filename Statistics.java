@@ -31,11 +31,13 @@ public class Statistics {
 
     @Override
     public String toString(){
-        String nl = "\n";
+        String nl = System.lineSeparator();
         int complete = rightCount + wrongCount;
-        String output = "Stat " + complete +
-        " rounds you got " + rightCount + " right and " + 
-        wrongCount + " answers";
+        String output = "Stats:" + nl +
+        "Questions: " + complete + nl +
+        "Right: " + rightCount + nl +
+        "Wrong: " + wrongCount;
+
         return output;
     }
 }

@@ -6,6 +6,7 @@ public class Calculator {
     private int b;
     private int op;
     private int res;
+    private String task;
 
     public Calculator(){
         rand = new Random();
@@ -13,51 +14,52 @@ public class Calculator {
         b = 0;
         op = 0;
         res = 0;
+        task = "";
     }
 
-    public void newRound(int range){
+    public String newTask(int range){
         a = rand.nextInt(range);
         b = rand.nextInt(range);
         op = rand.nextInt(4);
 
         switch (op) {
-            case 1 -> addition(a, b);
-            case 2 -> subtraction(a, b);
-            case 3 -> multiplication(a, b);
-            case 4 -> division(a,b);
+            case 0 -> task = addition();
+            case 1 -> task = subtraction();
+            case 2 -> task = multiplication();
+            case 3 -> task = division();
+            default -> System.out.println("Error: unknown operator!");
         }
+
+        return task;
     }
 
     public int getRes(){
         return res;
     }
 
-    private void addition(int o1, int o2){
-        res = o1 + o2;
-        System.out.println(o1 + " + " + o2 + " = ");
+    private String addition(){
+        res = a + b;
+        return a + " + " + b + " = ";
     }
 
-    private void subtraction(int o1, int o2){
-        res = o1 - o2;
-        System.out.println(o1 + " - " + o2 + " = ");
+    private String subtraction(){
+        res = a - b;
+        return a + " - " + b + " = ";
     }
 
-    private void multiplication(int o1, int o2){
-        res = o1 * o2;
-        System.out.println(o1 + " * " + o2 + " = ");
+    private String multiplication(){
+        res = a * b;
+        return a + " * " + b + " = ";
     }
 
-    private void division(int o1, int o2){
-        res = o1 / o2;
-        System.out.println(o1 + " / " + o2 + " = ");
+    private String division(){
+        if (b == 0) b = 1;
+        res = a / b;
+        a = res * b;
+        return a + " / " + b + " = ";
     }
 
-    public void checkresult(int ein){
-        if (ein == res){
-            System.out.println("Das ist Korrekt!");
-        }
-        else{
-            System.err.println("Das ist Falsch! Das korrekte Ergebnis ist " + res + "!");
-        }
+    public boolean checkresult(int ein){
+        return ein == res;
     }
 }
