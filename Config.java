@@ -1,18 +1,18 @@
 public class Config {
-    private int rounds;
+    private int tasks;
     private int range;
     private boolean useLives;
     private boolean useTimer;
 
     public Config(){
-        rounds = 5;
-        range = 50;
+        tasks = 3;
+        range = 10;
         useTimer = false;
         useLives = false;
         }
 
-    public void setRounds(int numRounds){
-        rounds = numRounds;
+    public void setTasks(int numRounds){
+        tasks = numRounds;
     }
 
     public void setRange(int numRange){
@@ -27,11 +27,11 @@ public class Config {
         useTimer = stateTimer;
     }
 
-    public int getRounds() {
-        return rounds;
+    public int getTasks(){
+        return tasks;
     }
 
-    public int getRange() {
+    public int getRange(){
         return range;
     }
 
