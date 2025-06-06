@@ -1,3 +1,5 @@
+package code;
+
 public class RunTimer{
 
     private long start;

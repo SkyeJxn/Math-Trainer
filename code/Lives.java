@@ -1,3 +1,5 @@
+package code;
+
 public class Lives{
     private int max;
     private int current;

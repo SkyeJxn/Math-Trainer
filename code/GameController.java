@@ -1,3 +1,5 @@
+package code;
+
 public class GameController {
     private final Calculator calc;
     private final Config conf;

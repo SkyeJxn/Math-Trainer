@@ -1,3 +1,5 @@
+package code;
+
 public class Statistics {
     private int rightCount;
     private int wrongCount;
