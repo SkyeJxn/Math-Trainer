@@ -1,8 +1,14 @@
 package code;
 import java.util.Random;
 
-public class GamePrints {
+/**
+ * Support class for prints in the game.
+ * @author SkyeJxn
+ * @version 1.0
+ */
+public class GamePrints{
     private static final Random rand = new Random();
+
 
     private static final String[] Compliments = {
         "Great job! Keep it up!",
@@ -30,7 +36,11 @@ public class GamePrints {
     "Failure is just feedback!"
 };
 
-    public static void printBrackets(String title){
+    /**
+     * Prints strings with a box of '#' around it.
+     * @param title string to print in a box.
+     */
+    public static void printBox(String title){
         int width = title.length() + 2;
         String ln = System.lineSeparator();
         String border = "#".repeat(width);
@@ -40,13 +50,19 @@ public class GamePrints {
         System.out.println(border + ln);
     }
 
-    public static String Motivator() {
+    /**
+     * Returns a random, motivating string from a given list.
+     */
+    public static String Motivator(){
         int index = rand.nextInt(Compliments.length);
         return Compliments[index];
     }
 
-    public static String Encourager() {
+    /**
+     * Returns a random, encouraging string from a given list.
+     */
+    public static String Encourager(){
     int index = rand.nextInt(Encouragements.length);
     return Encouragements[index];
-}
+	}
 }
