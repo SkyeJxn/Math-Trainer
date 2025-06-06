@@ -1,5 +1,4 @@
 public class Lives{
-
     private int max;
     private int current;
 
@@ -26,5 +25,21 @@ public class Lives{
 
     public void setMax(int numMax){
         max = numMax;
+    }
+
+    public boolean alive(){
+        return current > 0;
+    }
+
+    @Override
+    public String toString(){
+        String out;
+        if (current > 0){
+            out = "Lives left: " + current;
+        }
+        else{
+            out = "No lives left.";
+        }
+        return out;
     }
 }
