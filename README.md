@@ -1,4 +1,4 @@
-# Calculating Game
+# Math Trainer
 
 ## ToDo's
 
