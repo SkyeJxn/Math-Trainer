@@ -34,7 +34,7 @@ public class GameController {
      * @param numTasks number of tasks per round.
      * @param numRange upper bound for operands.
      */
-    public void changeConfig(boolean useLive, boolean useTime, int numTasks, int numRange){
+    public void changeConfig(boolean useLive, boolean useTime, int numTasks, int numRange, int numLives){
         // error for invalid input
         String err = "no number smaller than 1 allowed. Changed to default";
 
@@ -55,6 +55,10 @@ public class GameController {
             numRange = 10; //default range
         }
         conf.setRange(numRange);
+
+        lives.setMax(numLives);
+
+        stats.reset();
     }
 
     /**

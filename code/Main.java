@@ -20,7 +20,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean run = true;
         int in;
-        String ln = System.lineSeparator();
 
         // Title print
         GamePrints.printBox(" MATH TRAINER ");
@@ -28,10 +27,16 @@ public class Main {
         // Game loop
         while(run == true){
 
+            //Config Prompt before each new round
+            if (PromptYN(scanner, "Want to change the Config? (Warning, This resets the Statistics): ")){
+                System.out.println("Press enter to leave Defaults.");
+                configPrompt(controller, scanner);
+            }
+
             // Single round loop
             for (int i = 0; i < controller.getLength(); i++) {
                 controller.newTask();
-                in = scanner.nextInt();
+                in = taskAnswer(scanner);
                 controller.checkTask(in);
                 if (controller.getLiving() == false) break;
             }
@@ -39,8 +44,7 @@ public class Main {
             controller.endRound();
 
             // next round prompt
-            System.out.println(ln + "Want to continue?(Y/N): ");
-            if (scanner.next().equalsIgnoreCase("y")){
+            if (PromptYN(scanner, "Want to continue?: ")){
                 controller.newRound();
             }
             else{
@@ -49,5 +53,46 @@ public class Main {
             }
         }
         scanner.close();
+    }
+
+    private static boolean PromptYN(Scanner scanner, String message){
+        System.out.println(message + "(Y/N)");
+        String input = scanner.nextLine().trim().toLowerCase();
+        return input.equals("y");
+    }
+
+    private static int taskAnswer(Scanner scanner){
+        while (true) {
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number!");
+            }
+        }
+    }
+
+    private static int intPrompt(Scanner scanner, String message, int defaultValue){
+        System.out.println(message + "(default value " + defaultValue + ")");
+        try{
+            return Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Using default value: " + defaultValue);
+            return defaultValue;
+        }
+    }
+
+    private static void configPrompt(GameController controller, Scanner scanner){
+        GamePrints.printBox(" CONFIGURATION ");
+
+        int range = intPrompt(scanner, "Enter max operand range: ", 10);
+        int tasks = intPrompt(scanner, "Enter number of tasks per round: ", 5);
+        boolean useTimer = PromptYN(scanner, "Use timer?: ");
+        boolean useLives = PromptYN(scanner, "Use Lives?: ");
+        int lives = 3;
+        if (useLives){
+            lives = intPrompt(scanner, "Enter number of lives: ", 3);
+        }
+
+        controller.changeConfig(useLives, useTimer, tasks, range, lives);
     }
 }
