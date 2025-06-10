@@ -8,7 +8,7 @@ package code;
 public class RunTimer{
 
     private long start;
-    private long runtime;
+    private double runtime;
 
     /**
      * Standard constructor.
@@ -29,7 +29,7 @@ public class RunTimer{
      * Stops the task timer and prints the needed time in seconds.
      */
     public void end(){
-        runtime = System.nanoTime() - start;
+        runtime = (System.nanoTime() - start)/1000000000.0;
         System.out.println("That took " + runtime + " seconds.");
     }
 }
