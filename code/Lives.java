@@ -38,6 +38,7 @@ public class Lives{
      */
     public void changeCurrent(int x){
         current = current + x;
+        if (current > max) current = max;
     }
     /**
      * Resets the current number of lives to the max value.
@@ -52,10 +53,11 @@ public class Lives{
      */
     public void setMax(int numMax){
         max = numMax;
+        current = max;
     }
 
     /**
-     * Returns if the current number is above 0.
+     * Returns if the current number of lives is above 0.
      */
     public boolean alive(){
         return current > 0;
