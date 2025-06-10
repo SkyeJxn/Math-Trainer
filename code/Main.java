@@ -20,6 +20,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean run = true;
         int in;
+        boolean cont = true;
 
         // Title print
         GamePrints.printBox(" MATH TRAINER ");
@@ -29,7 +30,7 @@ public class Main {
 
             //Config Prompt before each new round
             if (PromptYN(scanner, "Want to change the Config? (Warning, This resets the Statistics): ")){
-                System.out.println("Press enter to leave Defaults.");
+                System.out.println("\n Press enter to leave Defaults. \n");
                 configPrompt(controller, scanner);
             }
 
@@ -40,17 +41,17 @@ public class Main {
                 controller.checkTask(in);
                 if (controller.getLiving() == false) break;
             }
-
-            controller.endRound();
-
+            
             // next round prompt
-            if (PromptYN(scanner, "Want to continue?: ")){
-                controller.newRound();
+            if (controller.getLiveUse() && controller.getLiving()){
+                controller.roundEnding(true);
+            } else{
+                if (controller.getLiveUse()) System.out.println("No lives left \n");
+                cont = PromptYN(scanner, "Want to continue?: ");
+                controller.roundEnding(cont);
             }
-            else{
-                GamePrints.printBox(" GOODBYE! ");
-                run = false;
-            }
+
+            if (!cont) run = false;
         }
         scanner.close();
     }
@@ -94,5 +95,7 @@ public class Main {
         }
 
         controller.changeConfig(useLives, useTimer, tasks, range, lives);
+
+        GamePrints.printBox(" CHANGED CONFIGURATION ");
     }
 }
