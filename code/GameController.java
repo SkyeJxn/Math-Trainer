@@ -33,6 +33,7 @@ public class GameController {
      * @param useTime activate/deactivate the RunTimer feature.
      * @param numTasks number of tasks per round.
      * @param numRange upper bound for operands.
+     * @param numLives number of max lives.
      */
     public void changeConfig(boolean useLive, boolean useTime, int numTasks, int numRange, int numLives){
         // error for invalid input
@@ -118,15 +119,27 @@ public class GameController {
     /**
      * Prints round statistics and remaining lives (if active).
      */
-    public void endRound(){
+    public void roundEnding(boolean goOn){
         System.out.println(stats);
-        if (conf.getLives()) System.out.println(lives);
+        if (conf.getLives()){
+            System.out.println(lives);
+        }
+        if (goOn && conf.getLives()){
+            newRound(1);
+        }
     }
 
     /**
      * adds one live for the next round (if Lives feature is active).
+     * @param num number of added lives after
      */
-    public void newRound(){
-        if (conf.getLives()) lives.changeCurrent(1);
+    private void newRound(int num){
+        lives.changeCurrent(num);
+        System.out.println("You survived a round and gained " + num + " live");
+        if (num > 1) System.out.print("s");
+    }
+
+    public boolean getLiveUse(){
+        return conf.getLives();
     }
 }
