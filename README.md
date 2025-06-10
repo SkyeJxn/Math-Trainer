@@ -58,7 +58,7 @@ java code.Main
 
 - [x] Add config option in game loop
 - [x] Add user input validation
-- [ ] Fix: Game loop continues after lives reach 0
+- [x] Fix: Game loop continues after lives reach 0
 - [ ] Add tests for all core classes
 - [ ] Add round timer in addition to task timer
 - [ ] Build standalone .jar release
