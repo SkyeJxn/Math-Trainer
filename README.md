@@ -23,7 +23,7 @@ The core classes are:
 - GameController for game flow control
 - Config for feature control
 
-The full javadoc with all classes can be found [here](https://skyejxn.github.io/Math-Trainer/).
+The full javadoc with all classes can be found here: [github pages](https://skyejxn.github.io/Math-Trainer/).
 
 ## Testing
 
