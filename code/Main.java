@@ -1,5 +1,6 @@
 package code;
 import java.util.Scanner;
+@SuppressWarnings("ConvertToTryWithResources")
 
 /**
  * Entry point of the program.
@@ -8,8 +9,6 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class Main {
-    @SuppressWarnings("ConvertToTryWithResources")
-
     /**
      * Starts the game loop and handles user inputs.
      * @param args command-line arguments (not used).
@@ -18,20 +17,22 @@ public class Main {
         // Object generation & runtime parameters
         GameController controller = new GameController();
         Scanner scanner = new Scanner(System.in);
-        boolean run = true;
         int in;
-        boolean cont = true;
-
+        boolean newGame = true;
+        boolean cont;
+        
         // Title print
         GamePrints.printBox(" MATH TRAINER ");
-
+        
         // Game loop
-        while(run == true){
-
-            //Config Prompt before each new round
-            if (PromptYN(scanner, "Want to change the Config? (Warning, This resets the Statistics): ")){
-                System.out.println("\n Press enter to leave Defaults. \n");
-                configPrompt(controller, scanner);
+        while(true){
+            if (newGame){
+                //Config Prompt before each new round
+                if (PromptYN(scanner, "Want to change the Config?: ")){
+                    System.out.println("\nPress enter to leave Defaults. \n");
+                    configPrompt(controller, scanner);
+                }
+                newGame = false;
             }
 
             // Single round loop
@@ -43,15 +44,28 @@ public class Main {
             }
             
             // next round prompt
-            if (controller.getLiveUse() && controller.getLiving()){
-                controller.roundEnding(true);
-            } else{
-                if (controller.getLiveUse()) System.out.println("No lives left \n");
+            if (controller.getLiveUse() && !controller.getLiving()){
+                System.out.println("No lives left \n");
+                cont = false;
+            }
+            else if (controller.getLiveUse()) {
+            cont = true;
+            controller.newRound(1);
+            }
+            else{
                 cont = PromptYN(scanner, "Want to continue?: ");
-                controller.roundEnding(cont);
+            }
+            
+            if (!cont){
+                controller.gameEnding();
+                newGame = PromptYN(scanner, "Want to start a new game?: ");
             }
 
-            if (!cont) run = false;
+            if (!cont && !newGame){
+                GamePrints.printBox(" GOODBYE ");
+                break;
+            }
+            
         }
         scanner.close();
     }
