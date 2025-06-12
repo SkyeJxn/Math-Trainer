@@ -62,7 +62,7 @@ public class Statistics {
         String output = "Stats:" + nl +
         "Questions: " + complete + nl +
         "Right: " + rightCount + nl +
-        "Wrong: " + wrongCount;
+        "Wrong: " + wrongCount + nl;
 
         return output;
     }

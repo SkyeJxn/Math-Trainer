@@ -84,14 +84,14 @@ public class GameController {
 
         // output request
         if (res){
-            System.out.println("Correct. " + GamePrints.Motivator());
+            System.out.println("Correct. " + GamePrints.Motivator() + System.lineSeparator());
         }
         else {
-            System.out.println("Wrong. " + GamePrints.Encourager());
+            System.out.println("Wrong. " + GamePrints.Encourager() + System.lineSeparator());
             if (conf.getLives()){
                 lives.changeCurrent(-1);
                 living = lives.alive();
-                if (living) System.out.println(lives.getCurrent() + " from " + lives.getMax() + " lives left.");
+                if (living) System.out.println(lives.getCurrent() + " from " + lives.getMax() + " lives left." + System.lineSeparator());
             }
         }
 
@@ -119,21 +119,15 @@ public class GameController {
     /**
      * Prints round statistics and remaining lives (if active).
      */
-    public void roundEnding(boolean goOn){
+    public void gameEnding(){
         System.out.println(stats);
-        if (conf.getLives()){
-            System.out.println(lives);
-        }
-        if (goOn && conf.getLives()){
-            newRound(1);
-        }
     }
 
     /**
      * adds one live for the next round (if Lives feature is active).
      * @param num number of added lives after
      */
-    private void newRound(int num){
+    public void newRound(int num){
         lives.changeCurrent(num);
         System.out.println("You survived a round and gained " + num + " live");
         if (num > 1) System.out.print("s");
