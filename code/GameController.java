@@ -10,6 +10,7 @@ public class GameController {
     private final Calculator calc;
     private final Config conf;
     private final RunTimer rt;
+    private final RunTimer tt;
     private final Lives lives;
     private final Statistics stats;
     private boolean living;
@@ -20,7 +21,8 @@ public class GameController {
     public GameController(){
         calc = new Calculator();
         conf = new Config();
-        rt = new RunTimer();
+        rt = new RunTimer(); //round timer
+        tt = new RunTimer(); //task timer
         lives = new Lives(3);
         stats = new Statistics();
         living = true;
@@ -35,13 +37,14 @@ public class GameController {
      * @param numRange upper bound for operands.
      * @param numLives number of max lives.
      */
-    public void changeConfig(boolean useLive, boolean useTime, int numTasks, int numRange, int numLives){
+    public void changeConfig(boolean useLive, boolean useTaskTime, boolean useRoundTime, int numTasks, int numRange, int numLives){
         // error for invalid input
         String err = "no number smaller than 1 allowed. Changed to default";
 
         // change state of Features
         conf.setLives(useLive);
-        conf.setTimer(useTime);
+        conf.setTaskTimer(useTaskTime);
+        conf.setRoundTimer(useRoundTime);
 
         // validate task input & change task number
         if (numTasks < 1){
@@ -69,8 +72,8 @@ public class GameController {
         System.out.println(calc.newTask(conf.getRange()));
 
         //timer start (if active)
-        if (conf.getTimer()){
-                rt.start();
+        if (conf.getTaskTimer()){
+                tt.start();
         }
     }
 
@@ -96,8 +99,8 @@ public class GameController {
         }
 
         // Timer stop (if active)
-        if (conf.getTimer()){
-            rt.end();
+        if (conf.getTaskTimer()){
+            tt.end("Task");
         }
         stats.addCount(res);
     }
@@ -107,6 +110,18 @@ public class GameController {
      */
     public boolean getLiving(){
         return living;
+    }
+
+    public void startRoundTime(){
+        if (conf.getRoundTimer()){
+            rt.start();
+        }
+    }
+
+    public void endRoundTime(){
+        if (conf.getRoundTimer()){
+            rt.end("Round");
+        }
     }
 
     /**

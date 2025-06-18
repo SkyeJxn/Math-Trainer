@@ -9,7 +9,8 @@ public class Config {
     private int tasks;
     private int range;
     private boolean useLives;
-    private boolean useTimer;
+    private boolean useTaskTimer;
+    private boolean useRoundTimer;
 
     /**
      * Standard constructor.
@@ -17,7 +18,8 @@ public class Config {
     public Config(){
         tasks = 5;
         range = 10;
-        useTimer = false;
+        useTaskTimer = false;
+        useRoundTimer = false;
         useLives = false;
         }
 
@@ -45,8 +47,12 @@ public class Config {
     /**
      * Activates / deactivates the RunTimer Feature
      */
-    public void setTimer(boolean stateTimer){
-        useTimer = stateTimer;
+    public void setTaskTimer(boolean stateTimer){
+        useTaskTimer = stateTimer;
+    }
+
+    public void setRoundTimer(boolean stateTimer){
+        useRoundTimer = stateTimer;
     }
 
     /**
@@ -73,7 +79,11 @@ public class Config {
     /**
      * Returns if the RunTimer feature is activated.
      */
-    public boolean getTimer(){
-        return useTimer;
+    public boolean getTaskTimer(){
+        return useTaskTimer;
+    }
+
+    public boolean getRoundTimer(){
+        return useRoundTimer;
     }
 }

@@ -37,12 +37,14 @@ public class Main {
 
             // Single round loop
             for (int i = 0; i < controller.getLength(); i++) {
+                if (i==0) controller.startRoundTime();
                 controller.newTask();
                 in = taskAnswer(scanner);
                 controller.checkTask(in);
                 if (controller.getLiving() == false) break;
             }
-            
+            controller.endRoundTime();
+
             // next round prompt
             if (controller.getLiveUse() && !controller.getLiving()){
                 System.out.println("No lives left \n");
@@ -101,14 +103,15 @@ public class Main {
 
         int range = intPrompt(scanner, "Enter max operand range: ", 10);
         int tasks = intPrompt(scanner, "Enter number of tasks per round: ", 5);
-        boolean useTimer = PromptYN(scanner, "Use timer?: ");
+        boolean useTaskTimer = PromptYN(scanner, "Use task timer?: ");
+        boolean useRoundTimer = PromptYN(scanner, "Use round timer?: ");
         boolean useLives = PromptYN(scanner, "Use Lives?: ");
         int lives = 3;
         if (useLives){
             lives = intPrompt(scanner, "Enter number of lives: ", 3);
         }
 
-        controller.changeConfig(useLives, useTimer, tasks, range, lives);
+        controller.changeConfig(useLives, useTaskTimer, useRoundTimer, tasks, range, lives);
 
         GamePrints.printBox(" CHANGED CONFIGURATION ");
     }
