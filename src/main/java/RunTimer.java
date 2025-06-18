@@ -29,6 +29,7 @@ public class RunTimer{
      */
     public void end(String message){
         runtime = (System.nanoTime() - start)/1000000000.0;
-        System.out.println("That " + message + " took " + runtime + " seconds.");
+        String out = String.format("That %s took %.2f seconds", message, runtime);
+        System.out.println(out);
     }
 }

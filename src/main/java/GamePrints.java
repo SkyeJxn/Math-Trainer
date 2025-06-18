@@ -41,12 +41,11 @@ public class GamePrints{
      */
     public static void printBox(String title){
         int width = title.length() + 2;
-        String ln = System.lineSeparator();
         String border = "#".repeat(width);
 
-        System.out.println(ln + border);
-        System.out.println("#" + title + "#");
-        System.out.println(border + ln);
+        System.out.printf("%n %s", border);
+        System.out.printf("# %s #", title);
+        System.out.printf("%n %s", border);
     }
 
     /**

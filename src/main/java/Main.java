@@ -72,7 +72,7 @@ public class Main {
     }
 
     private static boolean PromptYN(Scanner scanner, String message){
-        System.out.println(message + "(Y/N)");
+        System.out.printf("%s (Y/N)", message);
         String input = scanner.nextLine().trim().toLowerCase();
         return input.equals("y");
     }
@@ -88,11 +88,11 @@ public class Main {
     }
 
     private static int intPrompt(Scanner scanner, String message, int defaultValue){
-        System.out.println(message + "(default value " + defaultValue + ")");
+        System.out.printf("%s (default: %d)%n", message, defaultValue);
         try{
             return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Using default value: " + defaultValue);
+            System.out.printf("Invalid input. Using default value: %d %n", defaultValue);
             return defaultValue;
         }
     }

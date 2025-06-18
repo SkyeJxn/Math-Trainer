@@ -69,7 +69,7 @@ public class Lives{
     public String toString(){
         String out;
         if (current > 0){
-            out = "Lives left: " + current;
+            out = String.format("Lives left: %d", current);
         }
         else{
             out = "No lives left.";

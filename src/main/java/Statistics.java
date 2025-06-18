@@ -55,13 +55,8 @@ public class Statistics {
      */
     @Override
     public String toString(){
-        String nl = System.lineSeparator();
         int complete = rightCount + wrongCount;
-        String output = "Stats:" + nl +
-        "Questions: " + complete + nl +
-        "Right: " + rightCount + nl +
-        "Wrong: " + wrongCount + nl;
-
+        String output = String.format("Stats: %n Questions: %d%n Right: %d%n Wrong: %d%n", complete, rightCount, wrongCount);
         return output;
     }
 }

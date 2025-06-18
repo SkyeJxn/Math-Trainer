@@ -86,14 +86,14 @@ public class GameController {
 
         // output request
         if (res){
-            System.out.println("Correct. " + GamePrints.Motivator() + System.lineSeparator());
+            System.out.printf("Correct. %s%n", GamePrints.Motivator());
         }
         else {
-            System.out.println("Wrong. " + GamePrints.Encourager() + System.lineSeparator());
+            System.out.printf("Wrong. %s%n", GamePrints.Encourager());
             if (conf.getLives()){
                 lives.changeCurrent(-1);
                 living = lives.alive();
-                if (living) System.out.println(lives.getCurrent() + " from " + lives.getMax() + " lives left." + System.lineSeparator());
+                if (living) System.out.printf("%d from %d lives left. %n",lives.getCurrent(), lives.getMax());
             }
         }
 
@@ -150,7 +150,7 @@ public class GameController {
      */
     public void newRound(int num){
         lives.changeCurrent(num);
-        System.out.println("You survived a round and gained " + num + " live");
+        System.out.printf("You survived a round and gained %d live", num);
         if (num > 1) System.out.print("s");
     }
 
