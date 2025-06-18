@@ -24,11 +24,11 @@
             "problemMatcher": []
         },
         {
-            "label": "Compile All Java Files",
+            "label": "Compile Project",
             "type": "shell",
-            "command": "javac",
+            "command": "mvn",
             "args": [
-                "*.java"
+                "clean", "compile"
             ],
             "group": "build",
             "problemMatcher": []

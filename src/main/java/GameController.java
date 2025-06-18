@@ -150,7 +150,7 @@ public class GameController {
      */
     public void newRound(int num){
         lives.changeCurrent(num);
-        System.out.printf("You survived a round and gained %d live", num);
+        System.out.printf("You survived a round and gained %d live%n", num);
         if (num > 1) System.out.print("s");
     }
 
