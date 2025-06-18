@@ -17,8 +17,7 @@
             "type": "shell",
             "command": "javadoc",
             "args": [
-                "-d", "doc",
-                "-exclude", "src/test/java/*.java",
+                "-d", "docs",
                 "src/main/java/*.java"
             ],
             "group": "build",

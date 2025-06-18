@@ -27,10 +27,13 @@ The full javadoc with all classes can be found here: [github pages](https://skye
 
 ## Testing
 
-Includes a basic test for the Calculator class to check the logic functions.
-Tests are located in the 'code/test' folder.
+Includes JUnit Testing Files for:
 
-Planning to add JUnit testing in the future.
+- Calculator class: checking arithmetic logic
+- Lives class: checking live update logic
+- Statistics class: checking statistic update logic
+
+Tests are located in the 'code/test' folder.
 
 ## Configuration
 
@@ -60,7 +63,8 @@ java code.Main
 - [x] Add config option in game loop
 - [x] Add user input validation
 - [x] Fix: Game loop continues after lives reach 0
-- [ ] Add tests for all core classes
+- [x] Add tests for all core classes
 - [x] Add round timer in addition to task timer
+- [x] Convert to Maven Project
 - [ ] Build standalone .jar release
 - [ ] Add GUI version parallel to terminal version
