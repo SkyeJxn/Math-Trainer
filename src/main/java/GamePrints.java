@@ -43,9 +43,9 @@ public class GamePrints{
         int width = title.length() + 2;
         String border = "#".repeat(width);
 
-        System.out.printf("%n %s", border);
-        System.out.printf("# %s #", title);
-        System.out.printf("%n %s", border);
+        System.out.printf("%n%s", border);
+        System.out.printf("%n#%s#", title);
+        System.out.printf("%n%s%n", border);
     }
 
     /**
