@@ -1,5 +1,3 @@
-package code;
-
 /**
  * Controls the game logic and flow.
  * Connects all core components.

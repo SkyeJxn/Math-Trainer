@@ -1,3 +1,2 @@
 *.xopp
-*.class
-/out/
+/target/

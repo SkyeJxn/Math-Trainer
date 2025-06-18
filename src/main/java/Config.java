@@ -1,4 +1,3 @@
-package code;
 /**
  * Controls which features are activated in the game.
  * Stores configuration settings for the game (feature toggles, task number, operand range).

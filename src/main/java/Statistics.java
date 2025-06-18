@@ -1,5 +1,3 @@
-package code;
-
 /**
  * Implementation of the Statistics feature.
  * @author SkyeJxn

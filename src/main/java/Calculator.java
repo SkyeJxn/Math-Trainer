@@ -1,4 +1,3 @@
-package code;
 import java.util.Random;
 /**
  * Generates random math tasks (addition, subtraction, multiplication, division),
