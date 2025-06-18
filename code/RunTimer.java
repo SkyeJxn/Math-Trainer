@@ -27,6 +27,7 @@ public class RunTimer{
 
     /**
      * Stops the task timer and prints the needed time in seconds.
+     * @param message type of timer to print
      */
     public void end(String message){
         runtime = (System.nanoTime() - start)/1000000000.0;

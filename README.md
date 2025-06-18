@@ -13,7 +13,7 @@ This project was developed as a university learning project to practice object-o
 - Configurable number range
 - Task statistics
 - Optional **Lives** feature for attempt limiting
-- Optional **Timer** feature to track task times
+- Optional **Timer** feature to track task and round times
 
 ## Classes
 
@@ -39,7 +39,8 @@ Configuration is handled by the Config class. You can change:
 - **Task number per round**
 - **Number range of operands**
 - **Lives system** (on/off)
-- **Timer** (on/off)
+- **Task Timer** (on/off)
+- **Round Timer** (on/off)
 
 Planning to add configuration prompts to the game loop.
 
@@ -60,6 +61,6 @@ java code.Main
 - [x] Add user input validation
 - [x] Fix: Game loop continues after lives reach 0
 - [ ] Add tests for all core classes
-- [ ] Add round timer in addition to task timer
+- [x] Add round timer in addition to task timer
 - [ ] Build standalone .jar release
 - [ ] Add GUI version parallel to terminal version

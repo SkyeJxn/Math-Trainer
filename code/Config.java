@@ -45,12 +45,15 @@ public class Config {
     }
 
     /**
-     * Activates / deactivates the RunTimer Feature
+     * Activates/deactivates the Task Timer Feature
      */
     public void setTaskTimer(boolean stateTimer){
         useTaskTimer = stateTimer;
     }
 
+    /**
+     * Activates/deactivates the Round Timer Feature
+     */
     public void setRoundTimer(boolean stateTimer){
         useRoundTimer = stateTimer;
     }
@@ -77,12 +80,15 @@ public class Config {
     }
 
     /**
-     * Returns if the RunTimer feature is activated.
+     * Returns if the Task Timer feature is activated.
      */
     public boolean getTaskTimer(){
         return useTaskTimer;
     }
 
+    /**
+     * Returns if the Round Timer feature is activated.
+     */
     public boolean getRoundTimer(){
         return useRoundTimer;
     }

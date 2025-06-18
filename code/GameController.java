@@ -32,7 +32,8 @@ public class GameController {
      * Changes the saved configuration.
      * Checks validity of configured parameters.
      * @param useLive activate/deactivate the Lives feature.
-     * @param useTime activate/deactivate the RunTimer feature.
+     * @param useTaskTime activate/deactivate the Task Timer feature.
+     * @param useRoundTime activate/deactivate the Round Timer feature.
      * @param numTasks number of tasks per round.
      * @param numRange upper bound for operands.
      * @param numLives number of max lives.
@@ -112,12 +113,19 @@ public class GameController {
         return living;
     }
 
+    /**
+     * Starts the Round Timer (if active)
+     */
     public void startRoundTime(){
         if (conf.getRoundTimer()){
             rt.start();
         }
     }
 
+
+    /**
+     * Stops the Round Timer (if active)
+     */
     public void endRoundTime(){
         if (conf.getRoundTimer()){
             rt.end("Round");
@@ -148,6 +156,9 @@ public class GameController {
         if (num > 1) System.out.print("s");
     }
 
+    /**
+     * returns the activation state of the lives function
+     */
     public boolean getLiveUse(){
         return conf.getLives();
     }
