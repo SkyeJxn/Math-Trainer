@@ -15,7 +15,7 @@ public class CalculatorTest {
         int correct = 0; //counter for correct tasks
 
         //testing loop (n tasks)
-        for (int i = 0; i < n; i++){
+        for (int i = 1; i <= n; i++){
             //task generation
             String task = test.newTask(range);
             assertNotNull(task, "Generated task should not be null");
@@ -27,7 +27,7 @@ public class CalculatorTest {
                 correct++;
             }
             else{
-                simIn = test.getRes()*2;
+                simIn = test.getRes()+3;
                 assertFalse(test.checkResult(simIn), "should be wrong, using last result");
             }
         }
