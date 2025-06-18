@@ -1,3 +1,4 @@
+package core;
 /**
  * Implementation of the RunTimer feature.
  * @author SkyeJxn
@@ -27,9 +28,9 @@ public class RunTimer{
      * Stops the task timer and prints the needed time in seconds.
      * @param message type of timer to print
      */
-    public void end(String message){
+    public String end(String message){
         runtime = (System.nanoTime() - start)/1000000000.0;
         String out = String.format("That %s took %.2f seconds", message, runtime);
-        System.out.println(out);
+        return out;
     }
 }

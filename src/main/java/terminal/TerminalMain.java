@@ -1,4 +1,8 @@
+package terminal;
 import java.util.Scanner;
+
+import core.GameController;
+import core.GamePrints;
 @SuppressWarnings("ConvertToTryWithResources")
 
 /**
@@ -7,7 +11,7 @@ import java.util.Scanner;
  * @author SkyeJxn
  * @version 1.0
  */
-public class Main {
+public class TerminalMain {
     /**
      * Starts the game loop and handles user inputs.
      * @param args command-line arguments (not used).
@@ -21,7 +25,7 @@ public class Main {
         boolean cont;
         
         // Title print
-        GamePrints.printBox(" MATH TRAINER ");
+        System.out.println(GamePrints.printBox(" MATH TRAINER "));
         
         // Game loop
         while(true){
@@ -39,10 +43,10 @@ public class Main {
                 if (i==0) controller.startRoundTime();
                 controller.newTask();
                 in = taskAnswer(scanner);
-                controller.checkTask(in);
+                System.out.println(controller.checkTask(in));
                 if (controller.getLiving() == false) break;
             }
-            controller.endRoundTime();
+            System.out.println(controller.endRoundTime());
 
             // next round prompt
             if (controller.getLiveUse() && !controller.getLiving()){
@@ -51,19 +55,19 @@ public class Main {
             }
             else if (controller.getLiveUse()) {
             cont = true;
-            controller.newRound(1);
+            System.out.println(controller.newRound(1));
             }
             else{
                 cont = PromptYN(scanner, "Want to continue?: ");
             }
             
             if (!cont){
-                controller.gameEnding();
+                System.out.println(controller.gameEnding());
                 newGame = PromptYN(scanner, "Want to start a new game?: ");
             }
 
             if (!cont && !newGame){
-                GamePrints.printBox(" GOODBYE ");
+                System.out.println(GamePrints.printBox(" GOODBYE "));
                 break;
             }
             
@@ -98,7 +102,7 @@ public class Main {
     }
 
     private static void configPrompt(GameController controller, Scanner scanner){
-        GamePrints.printBox(" CONFIGURATION ");
+        System.out.println(GamePrints.printBox(" CONFIGURATION "));
 
         int range = intPrompt(scanner, "Enter max operand range: ", 10);
         int tasks = intPrompt(scanner, "Enter number of tasks per round: ", 5);
@@ -112,6 +116,6 @@ public class Main {
 
         controller.changeConfig(useLives, useTaskTimer, useRoundTimer, tasks, range, lives);
 
-        GamePrints.printBox(" CHANGED CONFIGURATION ");
+        System.out.println(GamePrints.printBox(" CHANGED CONFIGURATION "));
     }
 }

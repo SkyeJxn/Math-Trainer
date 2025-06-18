@@ -1,3 +1,4 @@
+package core;
 import java.util.Random;
 
 /**
@@ -39,13 +40,13 @@ public class GamePrints{
      * Prints strings with a box of '#' around it.
      * @param title string to print in a box.
      */
-    public static void printBox(String title){
+    public static String printBox(String title){
         int width = title.length() + 2;
         String border = "#".repeat(width);
+        String out;
 
-        System.out.printf("%n%s", border);
-        System.out.printf("%n#%s#", title);
-        System.out.printf("%n%s%n", border);
+        out = String.format("%n%s%n#%s#%n%s%n", border, title, border);
+        return out;
     }
 
     /**

@@ -1,3 +1,4 @@
+package core;
 /**
  * Implementation of the Lives feature.
  * @author SkyeJxn

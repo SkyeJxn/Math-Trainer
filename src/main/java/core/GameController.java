@@ -1,3 +1,5 @@
+package core;
+
 /**
  * Controls the game logic and flow.
  * Connects all core components.
@@ -81,27 +83,33 @@ public class GameController {
      * Influences current lives and stops timer (if active).
      * @param in input value to compare to calculated result.
      */
-    public void checkTask(int in){
+    public String checkTask(int in){
         boolean res = calc.checkResult(in);
+
+        String s1;
+        String s2 = "";
+        String s3 = "";
 
         // output request
         if (res){
-            System.out.printf("Correct. %s%n", GamePrints.Motivator());
+            s1 = String.format("Correct. %s%n", GamePrints.Motivator());
         }
         else {
-            System.out.printf("Wrong. %s%n", GamePrints.Encourager());
+            s1 = String.format("Wrong. %s%n", GamePrints.Encourager());
             if (conf.getLives()){
                 lives.changeCurrent(-1);
                 living = lives.alive();
-                if (living) System.out.printf("%d from %d lives left. %n",lives.getCurrent(), lives.getMax());
+                if (living) s2 = String.format("%d from %d lives left. %n",lives.getCurrent(), lives.getMax());
             }
         }
 
         // Timer stop (if active)
         if (conf.getTaskTimer()){
-            tt.end("Task");
+            s3 = tt.end("Task");
         }
         stats.addCount(res);
+
+        return String.format("%s%s%s%n", s1, s2, s3);
     }
 
     /**
@@ -124,10 +132,12 @@ public class GameController {
     /**
      * Stops the Round Timer (if active)
      */
-    public void endRoundTime(){
+    public String endRoundTime(){
+        String out = "";
         if (conf.getRoundTimer()){
-            rt.end("Round");
+            out = rt.end("Round");
         }
+        return out;
     }
 
     /**
@@ -140,18 +150,19 @@ public class GameController {
     /**
      * Prints round statistics and remaining lives (if active).
      */
-    public void gameEnding(){
-        System.out.println(stats);
+    public String gameEnding(){
+        return String.format("%s",stats);
     }
 
     /**
      * adds one live for the next round (if Lives feature is active).
      * @param num number of added lives after
      */
-    public void newRound(int num){
+    public String newRound(int num){
         lives.changeCurrent(num);
-        System.out.printf("You survived a round and gained %d live%n", num);
+        String out = String.format("You survived a round and gained %d live%n", num);
         if (num > 1) System.out.print("s");
+        return out;
     }
 
     /**
