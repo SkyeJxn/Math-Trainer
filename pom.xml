@@ -25,6 +25,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
+                <configuration>
+                    <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -56,8 +59,7 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <mkdir dir="release"/>
-                                <copy file="target/${project.build.finalName}-shaded.jar" tofile="release/${project.build.finalName}.jar"/>
+                                <copy file="target/${project.build.finalName}.jar" tofile="release/${project.build.finalName}.jar"/>
                             </target>
                         </configuration>
                         <goals>
