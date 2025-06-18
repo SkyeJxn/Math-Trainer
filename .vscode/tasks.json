@@ -32,6 +32,17 @@
             ],
             "group": "build",
             "problemMatcher": []
+        },
+        {
+            "label": "Maven Package",
+            "type": "shell",
+            "command": "mvn",
+            "args": [
+                "clean",
+                "package"
+            ],
+            "group": "build",
+            "problemMatcher": []
         }
     ]
 }
