@@ -7,7 +7,7 @@
             "type": "shell",
             "command": "java",
             "args": [
-                "Main"
+                "terminal/Main"
             ],
             "group": "test",
             "problemMatcher": []
@@ -18,7 +18,27 @@
             "command": "javadoc",
             "args": [
                 "-d", "docs",
-                "src/main/java/*.java"
+                "src/main/java/**/*.java"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Compile Terminal",
+            "type": "shell",
+            "command": "mvn",
+            "args": [
+                "clean", "compile", "-pl", "terminal", "-am"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Compile Websocket",
+            "type": "shell",
+            "command": "mvn",
+            "args": [
+                "clean", "compile", "-pl", "websocket", "-am"
             ],
             "group": "build",
             "problemMatcher": []
@@ -34,12 +54,32 @@
             "problemMatcher": []
         },
         {
-            "label": "Maven Package",
+            "label": "Full Release",
             "type": "shell",
             "command": "mvn",
             "args": [
                 "clean",
                 "package"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Terminal Release",
+            "type": "shell",
+            "command": "mvn",
+            "args": [
+                "clean", "package", "-pl", "terminal", "-am"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Websocket Release",
+            "type": "shell",
+            "command": "mvn",
+            "args": [
+                "clean", "package", "-pl", "websocket", "-am"
             ],
             "group": "build",
             "problemMatcher": []
