@@ -41,7 +41,7 @@ public class TerminalMain {
             // Single round loop
             for (int i = 0; i < controller.getLength(); i++) {
                 if (i==0) controller.startRoundTime();
-                controller.newTask();
+                System.out.println(controller.newTask());
                 in = taskAnswer(scanner);
                 System.out.println(controller.checkTask(in));
                 if (controller.getLiving() == false) break;
