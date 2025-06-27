@@ -18,7 +18,7 @@
         <!-- Add server/websocket dependencies here -->
     </dependencies>
     <build>
-        <finalName>Websocket-Math_Trainer-${project.version}</finalName>
+        <finalName>Websocket-Math-Trainer-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -32,7 +32,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>server.MainServer</mainClass>
+                                    <mainClass>websocket.MainWebsocket</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
