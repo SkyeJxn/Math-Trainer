@@ -69,13 +69,14 @@ public class GameController {
     /**
      * Generates new math task and starts timer (if active).
      */
-    public void newTask(){
-        System.out.println(calc.newTask(conf.getRange()));
+    public String newTask(){
+        String task = calc.newTask(conf.getRange());
 
         //timer start (if active)
         if (conf.getTaskTimer()){
                 tt.start();
         }
+        return task;
     }
 
     /**
