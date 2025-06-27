@@ -1,2 +1,7 @@
 *.xopp
 /target/
+/core/target/
+/terminal/target/
+/websocket/target/
+/websocket/dependency-reduced-pom.xml
+/terminal/dependency-reduced-pom.xml
